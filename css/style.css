@@ -1,0 +1,63 @@
+/* style.css - general styles for all pages */
+body {
+  margin: 0;
+  font-family: 'Pacifico', cursive;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #333;
+  min-height: 100vh;
+}
+
+h1, h2, h3, p {
+  text-align: center;
+  margin: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff6f91;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ff3c6e;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+img {
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+.gallery-item {
+  margin: 20px 0;
+}
+
+iframe, video {
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}

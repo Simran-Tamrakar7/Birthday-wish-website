@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Happy Birthday</title>
+  <meta charset="utf-8" />
+  <meta name="language" content="en-us" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    /* GIF background */
+    #loveHeart {
+      position: fixed;
+      top:0; left:0;
+      width:100vw; height:100vh;
+      background: url("images/smile.gif") center center no-repeat;
+      background-size: contain;
+      z-index: 0;
+      pointer-events:none;
+    }
+
+    /* Canvas for hearts */
+    #garden {
+      position: fixed;
+      top:0; left:0;
+      width:100vw; height:100vh;
+      z-index:1;
+      pointer-events:none;
+    }
+
+    /* Page content */
+    .section { position: relative; z-index: 10; padding-top:10px; }
+
+    #code, #birthdayMessage, audio, .disc { position: relative; z-index:10; }
+
+    #birthdayMessage {
+      background:#ffe6f0; border:2px solid #ff99cc; border-radius:10px;
+      padding:20px; margin-top:20px; text-align:center;
+      font-family:"Montserrat",sans-serif; font-size:18px; color:#d63384;
+      box-shadow:0px 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .confetti {
+      position: fixed; width: 10px; height:10px;
+      background-color: #ff69b4;
+      top:0; z-index:9999;
+      pointer-events:none;
+      animation: fall 3s linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+
+    #copyright {
+      font-family: "Montserrat", sans-serif;
+      text-align:center; margin-top:20px;
+    }
+    #copyright a { text-decoration:none; }
+    #copyright a:hover { color: royalblue; }
+  </style>
+
+  <link href="css/style1.css" type="text/css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+  <script src="js/jquery.js"></script>
+  <script src="js/birthday.js"></script>
+  <script src="js/hbd.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css" />
+</head>
+
+<body>
+  <!-- GIF + Canvas -->
+  <div id="loveHeart"></div>
+  <canvas id="garden"></canvas>
+
+  <!-- PAGE CONTENT -->
+  <div class="section">
+    <!-- Audio -->
+    <div class="columns">
+      <div class="column is-12">
+        <center>
+          <audio controls loop>
+            <source src="videos/song.mp3" type="audio/mpeg">
+          </audio>
+          <br>
+          <span class="disc">Disclaimer: Hey Man, Just Play it Manually, Scroll your screen and Enjoy! For Better view Use Laptop</span>
+        </center>
+      </div>
+    </div>
+
+    <!-- Code message -->
+    <div class="columns">
+      <div id="code" class="column is-6 is-offset-2">
+        <span class="comments">/**</span><br>
+        <span class="space"></span><span class="comments">* Today, the 17th day of Poush, is your birthday.</span><br>
+        <span class="space"></span><span class="comments">* So I created a webpage to celebrate this special day.</span><br>
+        <span class="space"></span><span class="comments">*/</span><br>
+        Boy u = <span class="keyword">new</span> Boy(<span class="string">"Name"</span>);<br>
+        <span class="comments">// Poush 17th, when the bell rang, your age increased </span><br>
+        Date currentTime = <span class="keyword">new</span> Date(); <br>
+        SimpleDateFormat formatter = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);<br>
+        String dateString = formatter.format(currentTime);<br>
+        if(dateString.equals(<span class="string">"2020-05-29 00:00:00"</span>)) { u.age++; }<br>
+        <span class="comments">// My best wishes will be with you simultaneously.</span><br>
+        <span class="keyword">new</span> Thread(){ <br>
+        @Override <br>
+        while(true){ u.fortune++; u.happiness++; } }.start();<br>
+        System.out.println(<span class="string">"Happy Birthday!"</span>);
+      </div>
+    </div>
+
+    <!-- Birthday Message -->
+    <div class="columns">
+      <div class="column is-8 is-offset-2">
+        <div id="birthdayMessage">
+          🎉 Hey! Wishing you a day full of laughter, joy, and unforgettable memories! Happy Birthday! 🎂
+        </div>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div id="copyright">
+      <p>Made with love by <a href="https://www.facebook.com/smilegupta.1998" target="_blank">Smile Gupta</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Confetti
+    function createConfetti() {
+      for(let i=0;i<50;i++){
+        let confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.style.left = Math.random()*window.innerWidth+'px';
+        confetti.style.backgroundColor = 'hsl(' + Math.random()*360 + ',100%,50%)';
+        document.body.appendChild(confetti);
+        setTimeout(()=>confetti.remove(),3000);
+      }
+    }
+    setTimeout(createConfetti,2000);
+
+    // Heart animation
+    function getHeartPoint(angle){
+      var t = angle/180*Math.PI;
+      var x = 160*16*Math.pow(Math.sin(t),3);
+      var y = -160*(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+      return [window.innerWidth/2 + x/20, window.innerHeight/2 + y/20];
+    }
+
+    function startHeartAnimation(){
+      var canvas = document.getElementById('garden');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      var ctx = canvas.getContext('2d');
+      var angle=0, heart=[];
+      var interval = setInterval(()=>{
+        var bloom = getHeartPoint(angle);
+        var draw=true;
+        for(var i=0;i<heart.length;i++){
+          var p = heart[i];
+          if(Math.hypot(p[0]-bloom[0],p[1]-bloom[1])<6){ draw=false; break; }
+        }
+        if(draw){
+          heart.push(bloom);
+          ctx.fillStyle='rgba(255,0,128,0.4)';
+          ctx.beginPath();
+          ctx.arc(bloom[0],bloom[1],5,0,2*Math.PI);
+          ctx.fill();
+        }
+        angle++;
+        if(angle>360) clearInterval(interval);
+      },10);
+    }
+
+    $(document).ready(function(){
+      $("#code").typewriter();
+      startHeartAnimation();
+    });
+  </script>
+</body>
+</html>
