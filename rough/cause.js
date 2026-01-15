@@ -1,22 +1,22 @@
  // Reasons database
  const reasons = [
     { 
-        text: "You’re such a kind and wonderful person, and I feel lucky to share such a good bond with you. 💖", 
+        text: "Some connections just feel easy, genuine, and meant to be. Ours is one of those, and I don’t take that lightly.Your presence alone makes moments brighter, and I feel lucky to share such a beautiful bond with you💖", 
         emoji: "🌟",
         gif: "gif1.gif"
     },
     { 
-        text: "May your day be filled with love, laughter, and endless joy. 🌸 ", 
+        text: "I hope today wraps you in laughter, love, and all the little joys you deserve. May this day remind you how deeply appreciated and cherished you truly are. Here’s to a day full of smiles, surprises, and memories you’ll carry with you 🌸 ", 
         emoji: "💗",
         gif: "gif2.gif"
     },
     { 
-        text: "Wishing you success, happiness, and everything your heart desires. ✨ ", 
+        text: "May every dream you’re quietly holding find its way to reality, step by step. I wish you growth, happiness, and wins that feel deeply personal and fulfilling. May life keep opening doors for you—some expected, some beautifully unexpected. ✨ ", 
         emoji: "💕",
         gif: "gif1.gif"
     },
     { 
-        text: "Stay the amazing girl you are—always spreading positivity around. Have the happiest year ahead! 🥳 ", 
+        text: "Never lose that light you carry—it makes the world around you softer and brighter. You have a way of spreading positivity without even trying, and that’s something special. Stay exactly who you are—authentic, kind, and quietly powerful in your own way.🥳 ", 
         emoji: "🌟",
         gif: "gif2.gif"
     }
